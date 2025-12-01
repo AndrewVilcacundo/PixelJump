@@ -10,6 +10,8 @@ public class BulletScript : MonoBehaviour
     private Rigidbody2D Rigidbody2D;
     private Vector3 Direction;
 
+    public bool isEnemyBullet = false; 
+
     private void Start()
     {
         Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -33,16 +35,36 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GruntScript grunt = other.GetComponent<GruntScript>();
-        JohnMovement john = other.GetComponent<JohnMovement>();
-        if (grunt != null)
+        // Si es bala del jugador -> NO DEBE destruirse al tocar el escudo
+        if (!isEnemyBullet && other.CompareTag("Shield"))
         {
-            grunt.Hit();
+            return; // dejar pasar la bala del jugador
         }
-        if (john != null)
+
+        // Golpear enemigo si es bala del jugador
+        if (!isEnemyBullet)
         {
-            john.Hit();
+            GruntScript grunt = other.GetComponent<GruntScript>();
+            if (grunt != null)
+            {
+                grunt.Hit();
+                DestroyBullet();
+                return;
+            }
         }
+
+        // Golpear al jugador si es bala enemiga
+        if (isEnemyBullet)
+        {
+            JohnMovement john = other.GetComponent<JohnMovement>();
+            if (john != null)
+            {
+                john.Hit();
+                DestroyBullet();
+                return;
+            }
+        }
+
         DestroyBullet();
     }
 }

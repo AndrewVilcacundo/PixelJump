@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 public class StarCollect : MonoBehaviour
 {
@@ -9,7 +6,8 @@ public class StarCollect : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(gameObject); // Desaparece la estrella
+            other.GetComponent<JohnMovement>().AddStar();
+            Destroy(gameObject);
         }
     }
 }
