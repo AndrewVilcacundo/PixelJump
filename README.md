@@ -43,7 +43,6 @@ Si llega a la meta, se activa la pantalla de Victoria o se carga el siguiente ni
 
 ##  Controles del Jugador
 
-|----------------------|--------------------------|
 | Acción               |           Tecla          |
 |----------------------|--------------------------|
 | Mover a la izquierda | Flecha izquierda o **A** |
@@ -51,7 +50,6 @@ Si llega a la meta, se activa la pantalla de Victoria o se carga el siguiente ni
 | Saltar               | Flecha arriba o **W**    |
 | Atacar               | Tecla de espacio         |
 | Escudo               | Flecha arriba o **R**    |
-|----------------------|--------------------------|
 
 ---
 
